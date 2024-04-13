@@ -1,4 +1,4 @@
- //Creates a function called createEmloyeeRecord
+ //Function to create an emloyee record
  function createEmployeeRecord(employeeArray) {
     return {
         firstName: employeeArray[0],
@@ -10,12 +10,12 @@
     };
 }
 
- //Creates a function called createEmloyeeRecords
+ //Function to create emloyee records from arrays of employee data
  function createEmployeeRecords(arrays) {
     return arrays.map(createEmployeeRecord);
  }
 
- //Creates a function called timeInEvent
+ //Function to create a timeIn event for an employee record
  function createTimeInEvent(dateStamp) {
     let [date, hour] = dateStamp.split(' ');
     this.timeInEvents.push({
@@ -26,7 +26,7 @@
     return this;
  }
 
- //Creates a function called createTimeOutEvent
+ //Function create a timeOut event for an employee record
  function createTimeOutEvent(dateStamp) {
     let [date, hour] = dateStamp.split(' ');
     this.timeOutEvents.push({
@@ -37,7 +37,7 @@
     return this;
  }
 
- //Create a function called hoursWorkedOnDate
+ //Function to calculate hours worked on a specific date 
  function hoursWorkedOnDate(date) {
     let timeInEvent = this.timeInEvents.find(event => event.date === date);
     let timeOutEvent = this.timeOutEvents.find(event => event.date === date);
@@ -51,27 +51,22 @@
     }
  }
 
-  //Create a function called wagesEarnedOnDate
-  function wagesEarnedOnDate(date) {
-
-    //Calculate the hours worked on the given date
+  //Function to calculate wages earned on a specific date 
+    function wagesEarnedOnDate(date) {
     const hoursWorked = hoursWorkedOnDate.call(this, date);
 
-    //Multiply the hours worked by the employee's pay rate
     return hoursWorked * this.payPerHour;
   }
 
-  //Create a function findEmployeeByFirstName
+  //Function to find an employee by their first name in an array of employee records
   function findEmployeeByFirstName(srcArray, firstName) {
     return srcArray.find(employee => employee.firstName === firstName);
   }
 
-  //Function  calculatePayRoll
+  //Function  to calculate the total payroll for an array of employee records
   function calculatePayroll(employeeRecords) {
-    //Initialize a variable to accumulate the total payroll
     let totalPayroll = 0;
 
-    //Use forEach to iterate over each employee record
     employeeRecords.forEach((employeeRecord) => {
          
     //Calculate the wages for the current employee using the allWagesFor function
@@ -81,7 +76,6 @@
     totalPayroll += employeeWages;
     });
     
-    //Return the total payroll
     return totalPayroll;
   }
 
